@@ -16,20 +16,23 @@
 		<script type="text/javascript">
 			var scene = Stage('myCanvas');
 			
-			var sq = Sprite({draw : function(c){
-				c.fillStyle = '#Fa0';
-				c.beginPath();
-				c.moveTo(10,10);
-				c.lineTo(160,10);
-				c.lineTo(160,100);
-				c.lineTo(10,100);
-				c.lineTo(10,10);
-				c.fill();
-				c.stroke();
-				c.closePath();				
-			}});
-			var sqInner = Sprite();
-			/*sqInner.conf.draw = function(c){
+			
+			var sq = Sprite({
+				x : 200,
+				rotation : 45,
+				draw : function(c){
+					c.fillStyle = '#Fa0';
+					c.beginPath();
+					c.moveTo(10,10);
+					c.lineTo(160,10);
+					c.lineTo(160,100);
+					c.lineTo(10,100);
+					c.lineTo(10,10);
+					c.fill();
+					c.stroke();
+					c.closePath();				
+				}});
+			var sqInner = Sprite({draw : function(c){
 				c.fillStyle = '#F00';
 				c.beginPath();
 				c.moveTo(15,15);
@@ -40,7 +43,37 @@
 				c.fill();
 				c.stroke();
 				c.closePath();				
-			}
+			}});
+			
+			
+			var sqa = Sprite({
+				draw : function(c){
+					c.fillStyle = '#0aE';
+					c.beginPath();
+					c.moveTo(10,10);
+					c.lineTo(130,10);
+					c.lineTo(160,100);
+					c.lineTo(10,80);
+					c.lineTo(10,10);
+					c.fill();
+					c.stroke();
+					c.closePath();				
+				}});
+			var sqInnera = Sprite({draw : function(c){
+				c.fillStyle = '#999';
+				c.beginPath();
+				c.moveTo(15,15);
+				c.lineTo(23,15);
+				c.lineTo(45,60);
+				c.lineTo(15,60);
+				c.lineTo(15,15);
+				c.fill();
+				c.stroke();
+				c.closePath();				
+			}});
+			
+			
+			
 			/*var sqInner = Sprite({draw : function(c){
 				c.fillStyle = '#F00';
 				c.beginPath();
@@ -53,7 +86,11 @@
 				c.stroke();
 				c.closePath();				
 			}});*/
-			scene.add(sq).add(sqInner)
+			
+			
+			sq.add(sqInner);
+			sqa.add(sqInnera);
+			scene.add(sqa).add(sq);
 			
 		</script>
 	</body>
