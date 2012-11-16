@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Canvas Framework</title>
+		<link href="css/reset.css" rel="stylesheet" type="text/css" />
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div class="page">
+			<h1>Canvas framework</h1>
+			<canvas id="myCanvas" width="800" height="550"></canvas>
+		</div>
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/SpriteCanvas.js"></script>
+		<script type="text/javascript">
+			var scene = Stage('myCanvas');
+			
+			var sq = Sprite({draw : function(c){
+				c.fillStyle = '#Fa0';
+				c.beginPath();
+				c.moveTo(10,10);
+				c.lineTo(160,10);
+				c.lineTo(160,100);
+				c.lineTo(10,100);
+				c.lineTo(10,10);
+				c.fill();
+				c.stroke();
+				c.closePath();				
+			}});
+			var sqInner = Sprite();
+			/*sqInner.conf.draw = function(c){
+				c.fillStyle = '#F00';
+				c.beginPath();
+				c.moveTo(15,15);
+				c.lineTo(45,15);
+				c.lineTo(45,60);
+				c.lineTo(15,60);
+				c.lineTo(15,15);
+				c.fill();
+				c.stroke();
+				c.closePath();				
+			}
+			/*var sqInner = Sprite({draw : function(c){
+				c.fillStyle = '#F00';
+				c.beginPath();
+				c.moveTo(15,15);
+				c.lineTo(45,15);
+				c.lineTo(45,60);
+				c.lineTo(15,60);
+				c.lineTo(15,15);
+				c.fill();
+				c.stroke();
+				c.closePath();				
+			}});*/
+			scene.add(sq).add(sqInner)
+			
+		</script>
+	</body>
+</html>
