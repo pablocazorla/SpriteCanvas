@@ -10,6 +10,7 @@
 		conf : null,
 		collection : [],
 		length : 0,
+		msStep : 20,
 		
 		init : function(custom){
 			this.conf = {			
@@ -31,10 +32,44 @@
 			this.length++;
 			return this;
 		},
+		
+		
+		
+		//Cinematics
+		
+		cinematic : {
+			e : [],
+			l : 0
+		},
+				
+		
+		
+		
+		
+		
+		
 		animate : function(props,duration){
-			
+			var steps = Math.round(duration/this.msStep),
+				animation = [{},steps];
+			for(var a in props){
+				animation[0][a] = (parseInt(props[a]) - parseInt(this.conf[a]))/steps;
+			};
+			this.cinematic.e.push(animation);
+			this.cinematic.l++;
+			return this;
 		},
 		render : function(stage){
+			
+			//Cinematics
+			if(this.cinematic.l > 0){
+				for(var i=0;i<this.cinematic.l;i++){
+					for(var a in this.cinematic.e[i][0]){
+						this.conf[a] += this.cinematic.e[i][0][a];
+					};
+					this.cinematic.e[i][1]--;
+				}
+				
+			}
 			
 			//Set transform
 			stage.c.translate(this.conf.x,this.conf.y);
@@ -97,7 +132,7 @@
 					//Render branch
 					self.collection[i].render(self);
 				}
-			},20);
+			},self.msStep);
 			return this;
 		},
 		add : function(sprite){
